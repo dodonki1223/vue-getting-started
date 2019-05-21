@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+</head>
+<title>Vue.js SPAのサンプルアプリケーション</title>
+<style>
+    /* 任意のCSSを記載、今回は割愛 */
+</style>
+<body>
+  <div id="app">
+    <nav>
+      <router-link to="/top">トップページ</router-link>
+      <router-link to="/users">ユーザー一覧ページ</router-link>
+    </nav>
+    <router-view></router-view>
+  </div>
+
+  <!-- Vue.js本体とVue Routerの読み込み -->
+  <script src="https://unpkg.com/vue@2.5.17"></script>
+  <script src="https://unpkg.com/vue-router@3.0.1/dist/vue-router.js"></script>
+
+  <!-- ここからを以後書いていく -->
+  <!-- 必要な分のコンポーネントのテンプレート定義 -->
+  <script type="text/x-template" id="user-list">
+    <!-- コンポーネントで使用するテンプレートHTMLを記載。コンポーネントごとに繰り返しscriptタグで定義 -->
+  </script>
+
+  <!-- ...いくつかのテンプレート定義が続く... -->
+
+  <!-- 任意のJS実装 -->
+  <script>
+    // コンポーネントとルート定義からVueインスタンスの生成など
+    // ここにコードを書いていく。
+  </script>
+  <!-- ここまで以後書いていく -->
+</body>
+</html>
