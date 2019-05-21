@@ -1,0 +1,8 @@
+# OS側で作成されるファイルの除外
+*.DS_Store
+
+# Vimの編集時に作成されるファイルの除外
+*.swp
+
+# node_modulesフォルダを除外
+/node_modules
