@@ -24,15 +24,71 @@
   <!-- ここからを以後書いていく -->
   <!-- 必要な分のコンポーネントのテンプレート定義 -->
   <script type="text/x-template" id="user-list">
-    <!-- コンポーネントで使用するテンプレートHTMLを記載する -->
-    <div>ユーザー一覧ページです。</div>
+    <div>
+      <div class="loading" v-if="loading">読み込み中...</div>
+      <div v-if="error" class="error">
+        {{ error }}
+      </div>
+      <!-- usersがロードされたら各ユーザーの名前を表示する -->
+      <div v-for="user in users" :key="user.id">
+        <h2>{{ user.name }}</h2>
+      </div>
+    </div>
   </script>
 
   <!-- 任意のJS実装 -->
   <script>
+    // JSONを返す関数
+    // この関数を用いて擬似的にWeb API経由で情報を取得したようにする
+    var getUsers = function (callback) {
+      setTimeout(function() {
+        callback(null, [
+          {
+            id: 1,
+            name: 'Takuya Tejima'
+          },
+          {
+            id: 2,
+            name: 'Yohei Noda'
+          }
+        ])
+      }, 1000)
+    }
+
+    // UserListを改修
     var UserList = {
       // HTML上のscriptタグのidを指定する
-      template: '#user-list'
+      template: '#user-list',
+      data: function() {
+        return {
+          loading: false,
+          users: function() { return [] }, // 初期値の空配列
+          error: null
+        }
+      },
+      // 初期化時にデータを取得する
+      created: function() {
+        this.fetchData()
+      },
+      // $routeの変更をwatchすることでルーティングが変更された時に再度データを取得する
+      watch: {
+        '$route':'fetchData'
+      },
+      methods: {
+        fetchData: function () {
+          this.loading = true
+          // 取得したデータの結果をusersに格納する
+          // Function.prototype.bindはthisのスコープを渡すために利用
+          getUsers((function(err, users) {
+            this.loading = false
+            if (err) {
+              this.error = err.toString()
+            } else {
+              this.users = users
+            }
+          }).bind(this))
+        }
+      }
     }
 
     var router = new VueRouter({
