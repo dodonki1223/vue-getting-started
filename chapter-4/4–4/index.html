@@ -10,6 +10,7 @@
 <body>
   <div id="app">
     <nav>
+      <!-- route-link によるナビゲーションを定義 -->
       <router-link to="/top">トップページ</router-link>
       <router-link to="/users">ユーザー一覧ページ</router-link>
     </nav>
@@ -23,16 +24,35 @@
   <!-- ここからを以後書いていく -->
   <!-- 必要な分のコンポーネントのテンプレート定義 -->
   <script type="text/x-template" id="user-list">
-    <!-- コンポーネントで使用するテンプレートHTMLを記載。コンポーネントごとに繰り返しscriptタグで定義 -->
+    <!-- コンポーネントで使用するテンプレートHTMLを記載する -->
+    <div>ユーザー一覧ページです。</div>
   </script>
-
-  <!-- ...いくつかのテンプレート定義が続く... -->
 
   <!-- 任意のJS実装 -->
   <script>
-    // コンポーネントとルート定義からVueインスタンスの生成など
-    // ここにコードを書いていく。
+    var UserList = {
+      // HTML上のscriptタグのidを指定する
+      template: '#user-list'
+    }
+
+    var router = new VueRouter({
+      routes: [
+        {
+          path: '/top',
+          component: {
+            template: '<div>トップページです。</div>'
+          }
+        },
+        {
+          path: '/users',
+          component: UserList
+        }
+      ]
+    })
+
+    var app = new Vue({
+      router: router
+    }).$mount('#app')
   </script>
-  <!-- ここまで以後書いていく -->
 </body>
 </html>
