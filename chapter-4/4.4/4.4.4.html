@@ -117,31 +117,31 @@
             name: '',
             description: ''
           }
-        }
-      },
-      createUser: function() {
-        // 入力パラメーターのバリデーション
-        if (this.user.name.trim() === '') {
-          this.error = 'Nameは必須ですぞ'
-          return
-        }
-        if (this.user.description.trim() === '') {
-          this.error = 'Descriptionは必須ですぞ'
-          return
-        }
-        postUser(this.user, (function(err, user){
-          this.sending = false
-          if (err) {
-            this.error = err.toString()
-          } else {
-            this.error = null
-            // デフォルトでフォームをリセット
-            this.user = this.defaultUser()
-            alert('新規ユーザーが登録されました')
-            // ユーザー一覧ページに戻る
-            this.$router.push('/users')
+        },
+        createUser: function() {
+          // 入力パラメーターのバリデーション
+          if (this.user.name.trim() === '') {
+            this.error = 'Nameは必須ですぞ'
+            return
           }
-        }).bind(this))
+          if (this.user.description.trim() === '') {
+            this.error = 'Descriptionは必須ですぞ'
+            return
+          }
+          postUser(this.user, (function(err, user){
+            this.sending = false
+            if (err) {
+              this.error = err.toString()
+            } else {
+              this.error = null
+              // デフォルトでフォームをリセット
+              this.user = this.defaultUser()
+              alert('新規ユーザーが登録されました')
+              // ユーザー一覧ページに戻る
+              this.$router.push('/users')
+            }
+          }).bind(this))
+        }
       }
     }
 
