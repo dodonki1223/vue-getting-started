@@ -8,8 +8,8 @@
 <body>
   <div id="app">
     <todo-list :todos="todos">
-      <li slot-scope="slotProps" v-if="slotProps.todo.isCompleted">
-        {{ slotProps.todo.text }}
+      <li slot-scope="{ todo }" v-if="todo.isCompleted">
+        {{ todo.text }}
       </li>
     </todo-list>
   </div>
