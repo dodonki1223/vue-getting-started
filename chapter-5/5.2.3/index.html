@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Vue app</title>
+  <script src="https://unpkg.com/vue@2.5.17"></script>
+</head>
+<body>
+  <div id="app">
+    <todo-list :todos="todos">
+      <li slot-scope="slotProps" v-if="slotProps.todo.isCompleted">
+        {{ slotProps.todo.text }}
+      </li>
+    </todo-list>
+  </div>
+  <script src="./app.js"></script>
+</body>
+</html>
