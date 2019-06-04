@@ -6,3 +6,4 @@
 
 # node_modulesフォルダを除外
 /node_modules
+/chapter-6/6.5/node_modules
