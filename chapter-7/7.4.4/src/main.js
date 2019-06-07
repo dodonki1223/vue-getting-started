@@ -9,14 +9,14 @@ const store = new Vuex.Store({
   },
   // mutationsオプションでミューテーションを定義する
   mutations: {
-    // `increment`ミューティーションを定義
-    increment (state) {
-      state.count = state.count + 1
+    // ペイロード内の`amount`を使ってステートを更新
+    increment (state, payload) {
+      state.count = state.count + payload.amount
     }
   }
 })
 
 // store.commitでミューテーションを呼び出す
 console.log(store.state.count)
-store.commit('increment')      // `increment`ミューテーションを呼び出す
+store.commit('increment', { amount: 5 })
 console.log(store.state.count)
