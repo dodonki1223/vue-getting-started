@@ -43,6 +43,10 @@
         フィルタしない
       </li>
     </ul>
+
+    <h2>保存と復元</h2>
+    <button type="button" v-on:click="save">保存</button>
+    <button type="button" v-on:click="restore">復元</button>
   </div>
 </template>
 
@@ -53,7 +57,7 @@ export default {
       // 入力中の新しいタスク名を一時的に保持する
       newTaskName: '',
       // 新しいタスクに紐づくラベル一覧を一時的に保持する
-      neaTaskLabelIds: [],
+      newTaskLabelIds: [],
       // 入力中の新しいラベル名を一時的に保持する
       newLabelText: '',
     }
@@ -99,7 +103,6 @@ export default {
       const label = this.labels.filter(label => label.id === id)[0]
       return label ? label.text : ''
     },
-
     // フィルタする対象のラベルを変更する
     changeFilter(labelId) {
       // `changeFilter`ミューテーションをコミット
@@ -107,6 +110,16 @@ export default {
         filter: labelId
       })
     },
+    // 現在の状態を保存する
+    save() {
+      // `save`アクションをコミット
+      this.$store.dispatch('save')
+    },
+    // 保存されている状態を復元する
+    restore() {
+      // `restore`アクションをコミット
+      this.$store.dispatch('restore')
+    }
   }
 }
 </script>
