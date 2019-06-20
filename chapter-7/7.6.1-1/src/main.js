@@ -29,3 +29,10 @@ const store = new Vuex.Store({
     }
   }
 })
+
+console.log(store.state.example.value)
+console.log(store.getters['example/upper'])
+console.log(store.commit('example/update'))
+console.log(store.state.example.value)
+console.log(store.dispatch('example/update'))
+console.log(store.state.example.value)
