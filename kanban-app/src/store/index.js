@@ -8,11 +8,11 @@ Vue.use(Vuex)
 
 // 状態`Auth`と状態`Board`をVuexのstateで一元管理出来るよう定義する
 const state = {
-  auth: {        // 状態`Auth`
+  auth: { // 状態`Auth`
     token: null, // `token`はnullで初期化
     userId: null // `userId`はnullで初期化
   },
-  board: {    // 状態`Board`
+  board: { // 状態`Board`
     lists: [] // 状態`TaskList`は空で初期化
   }
 }
