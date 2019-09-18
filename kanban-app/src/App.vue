@@ -1,7 +1,7 @@
 <template>
-  <div id="app">
+  <ErrorBoundary id="app">
     <router-view/>
-  </div>
+  </ErrorBoundary>
 </template>
 
 <script>
