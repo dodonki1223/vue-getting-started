@@ -8,6 +8,7 @@ import router from './router'
 import store from './store' // Vuexのストアインスタンスをインポート
 
 Vue.config.productionTip = false
+Vue.config.perfomance = true // NODE_ENV == 'development'で測定有効化
 
 // ErrorBoundaryコンポーネントのインストール
 Vue.component(ErrorBoundary.name, ErrorBoundary)
